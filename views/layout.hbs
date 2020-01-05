@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{{title}}</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
+</head>
+<body>
+    <h1>{{title}}</h1>
+    <nav>
+        <ul>
+            <li><a href="/">Aloha 'Ohana [replace with logo later]</a></li>
+            <li><a href="/about">About us</a></li>
+            {{#if user }}
+                <li>Hi, {{user.username}}! </li>
+                <li><a href="/tours">Your tours</a></li> 
+                <li><a href="/create">Create your tour!</a></li> 
+                <li><a href="/logout">logout</a></li> 
+                <li><a href="/user/upload-profile-pic">profile</a></li> 
+            {{else}}
+                <li><a href="/become-tour-guide">Become a tour guide</a></li>
+                <li><a href="/signup">signup</a></li>
+                <li><a href="/login">login</a></li>
+            {{/if}}
+            
+        </ul>
+    </nav>
+
+    {{{body}}}
+</body>
+</html>

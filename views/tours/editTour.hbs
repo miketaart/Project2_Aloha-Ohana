@@ -1,0 +1,24 @@
+<h2>Edit your tour</h2>
+<form action="/edit/{{tour.id}}" method="POST" id="usrform">
+    <input type="text" placeholder="Title of your tour" name="title" value="{{tour.title}}">
+    <input type="number" placeholder="Duration" name="duration" value="{{tour.duration}}">
+    <input type="text" placeholder="Name of guide" name="guide_name" value="{{tour.guide_name}}">
+    <input type="text" placeholder="image url" name="image" value="{{tour.image}}">
+
+    <select type="text" value="{{tour.city}}" name="city">
+        <option value='Amsterdam' Selected>Amsterdam</option>
+        <option value='Barcelona'>Barcelona</option>
+        <option value='Berlin'>Berlin</option>
+        <option value='Lisbon'>Lisbon</option>
+        <option value='Madrid'>Madrid</option>
+        <option value='Mexico City'>Mexico City</option>
+        <option value='Miami'>Miami</option>
+        <option value='Paris'>Paris</option>
+        <option value='São Paulo'>São Paulo</option>
+    </select><br><br>
+
+    <textarea rows="20" cols="50" name="description" form="usrform">
+    {{tour.description}}</textarea>
+
+    <input type="submit">
+</form>
