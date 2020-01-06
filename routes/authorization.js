@@ -11,7 +11,7 @@ app.get("/signup", (req,res)=> {
 app.post("/signup", (req,res, next)=> {
 
     bcrypt.hash(req.body.password, 10, function(err, hash) {
-        if(err) return next(createError(500, "Hashing failed. Trying to hack us?"));
+        if(err) return next(createError(500, "Hashing error."));
         // Store hash in your password DB.
         User.findOne({username: req.body.username})
         .then((user)=> {
@@ -26,7 +26,8 @@ app.post("/signup", (req,res, next)=> {
                 //firstname: req.body.firstname,
                 //lastname: req.body.lastname,
                 email: req.body.email,
-                password: hash
+                password: hash,
+                something: "else"
             })
         })
         .then((user)=> {
@@ -35,7 +36,7 @@ app.post("/signup", (req,res, next)=> {
         .catch((error)=> {
             if(error.type === "Availability Error") next(createError(400, error));
             else if(error.name === "ValidationError") next(createError(400, error.message));
-            else next(createError(500, "Woow, our database crashed. Please come back later."))
+            else next(createError(500, "Database error."))
         })
     }); 
 })
@@ -45,11 +46,10 @@ app.get("/login", (req,res)=> {
 })
 
 app.post("/login", (req,res, next)=> {
-    debugger
     User.findOne({username: req.body.username})
         .then((user)=> {
             if(!user) next(createError(403))
-            else { 
+            else if(user) { 
                 bcrypt.compare(req.body.password, user.password, function(err, correct) {
                     if(err) return next(createError(500, "Encryption error"));
                     else if(correct) {
@@ -65,10 +65,10 @@ app.post("/login", (req,res, next)=> {
                 });                
             }
         })
-        .catch((err)=> {
-            console.log(err)
-            next(createError(500, err))
-        })
+            .catch((err)=> {
+                console.log(err)
+                next(createError(500, err))
+            })
 })
 
 app.get("/logout", (req,res)=> {
@@ -80,6 +80,17 @@ app.get("/username-availability/:username", (req,res)=> {
     User.findOne({username: req.params.username})
         .then((user)=> {
             if(user) res.json({available: false});
+            else res.json({available: true});
+        })
+        .catch((error)=> {
+            res.json(createError(500, "A server error has occurred."));
+        })
+})
+
+app.get("/username-availability/:username", (req,res)=> {
+    User.findOne({username: req.params.username})
+        .then((guide)=> {
+            if(guide) res.json({available: false});
             else res.json({available: true});
         })
         .catch((error)=> {
