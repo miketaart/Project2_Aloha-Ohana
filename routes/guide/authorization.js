@@ -1,14 +1,14 @@
 const express = require("express");
 const app = express();
-const Guide = require("../models/Guide");
+const Guide = require("../../models/Guide");
 const bcrypt = require('bcrypt');
 const createError = require('http-errors')
 
-app.get("/become-a-guide", (req,res)=> {
+app.get("/signup", (req,res)=> {
     res.render("authorization/signupGuide.hbs");
 })
 
-app.post("/become-a-guide", (req,res, next)=> {
+app.post("/signup", (req,res, next)=> {
 
     bcrypt.hash(req.body.password, 10, function(err, hash) {
         if(err) return next(createError(500, "Hashing failed"));
@@ -41,11 +41,11 @@ app.post("/become-a-guide", (req,res, next)=> {
     }); 
 })
 
-app.get("/guide/login", (req,res)=> {
+app.get("/login", (req,res)=> {
     res.render("authorization/loginGuide.hbs");
 })
 
-app.post("/guide/login", (req,res, next)=> {
+app.post("/login", (req,res, next)=> {
     Guide.findOne({username: req.body.username})
         .then((guide)=> {
             if(!guide) res.status(403).render("error");

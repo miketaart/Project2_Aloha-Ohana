@@ -38,28 +38,36 @@ function protect(req, res, next) {
 }
 app.use((req, res, next)=> {
   if(req.session.user) res.locals.user = req.session.user;
-  if(req.session.guide) res.locals.guide = req.session.guide;
+  debugger
+  if(!req.session.role){
+    req.session.role = {
+      tourist: true,
+      guide: false
+    }
+  }
+  res.locals.role = req.session.role;
   next();
 })
 
 app.use(express.static('uploads'));
 app.use(express.static('public'));
 
-app.use("/tourist", require("./routes/tours.js"));
-app.use("/tourist", require("./routes/authorization.js"));
-app.use("/tourist/detail", require("./routes/tour.js")); 
-app.use("/tourist/user", protect, require("./routes/user.js"));
+
 app.use("/", require("./routes/home"));
 app.use("/", require("./routes/about"));
-app.use("/guide", require("./routes/createTour.js")); //protect
-app.use("/", require("./routes/editTour.js")); //protect
-app.use("/", require("./routes/deleteTour.js")); //protect
-app.use("/", require("./routes/authGuide.js"));
+app.use("/user", protect, require("./routes/user"));
+
+app.use("/tourist/tours", require("./routes/tourist/tours"));
+app.use("/tourist/authorization", require("./routes/tourist/authorization"));
+app.use("/tourist/switch-role", require("./routes/tourist/switch-role"));
+
+app.use("/guide/tours", require("./routes/guide/tours")); //protect
+app.use("/guide/authorization", require("./routes/guide/authorization"));
+app.use("/guide/switch-role", require("./routes/guide/switch-role"));
 
 
 // remember the page the user came from
 // pass user state/session info to all hbs files
-
 app.use((err, req, res, next)=> {
   console.log("ERROR", err)
   res.render("error", err)

@@ -14,8 +14,9 @@ User = mongoose.model("users", {
     },
     profile_pic: String,
     touristProfile: {type: ObjectId, ref: "Tourist"},
-    guideProfile: {type: ObjectId, ref: "Guide"}
-    //role: {type: String, enum: ["guide", "tourist"]} 
+    guideProfile: {type: ObjectId, ref: "Guide"},
+    //role: {type: String, enum: ["guide", "tourist"]}, 
+    hostedTours: [{type: ObjectId, ref: "Tour"}]
 })
 
 module.exports = User
