@@ -1,17 +1,17 @@
 const express = require("express");
 const app = express();
-const User = require("../models/User");
+const Guide = require("../models/Guide");
 const bcrypt = require('bcrypt');
 const createError = require('http-errors')
 
-app.get("/signup", (req,res)=> {
-    res.render("authorization/signup.hbs");
+app.get("/become-a-guide", (req,res)=> {
+    res.render("authorization/signupGuide.hbs");
 })
 
-app.post("/signup", (req,res, next)=> {
+app.post("/become-a-guide", (req,res, next)=> {
 
     bcrypt.hash(req.body.password, 10, function(err, hash) {
-        if(err) return next(createError(500, "Hashing failed. Trying to hack us?"));
+        if(err) return next(createError(500, "Hashing failed"));
         // Store hash in your password DB.
         User.findOne({username: req.body.username})
         .then((user)=> {
@@ -21,16 +21,17 @@ app.post("/signup", (req,res, next)=> {
                 error.type = "Availability Error";
                 throw error;
             }
-            return User.create({
+            return Guide.create({
+                firstName: req.body.firstName,
+                lastName: req.body.lastName,
+                birthday: req.body.birthday,
                 username: req.body.username,
-                //firstname: req.body.firstname,
-                //lastname: req.body.lastname,
                 email: req.body.email,
                 password: hash
             })
         })
-        .then((user)=> {
-            res.redirect("/login");
+        .then((guide)=> {
+            res.redirect("/guide/login");
         })
         .catch((error)=> {
             if(error.type === "Availability Error") next(createError(400, error));
@@ -40,27 +41,26 @@ app.post("/signup", (req,res, next)=> {
     }); 
 })
 
-app.get("/login", (req,res)=> {
-    res.render("authorization/login.hbs");
+app.get("/guide/login", (req,res)=> {
+    res.render("authorization/loginGuide.hbs");
 })
 
-app.post("/login", (req,res, next)=> {
-    debugger
-    User.findOne({username: req.body.username})
-        .then((user)=> {
-            if(!user) next(createError(403))
+app.post("/guide/login", (req,res, next)=> {
+    Guide.findOne({username: req.body.username})
+        .then((guide)=> {
+            if(!guide) res.status(403).render("error");
             else { 
-                bcrypt.compare(req.body.password, user.password, function(err, correct) {
-                    if(err) return next(createError(500, "Encryption error"));
+                bcrypt.compare(req.body.password, guide.password, function(err, correct) {
+                    if(err) return res.render("error");
                     else if(correct) {
-                        req.session.user = user;
+                        req.session.guide = guide;
                         if(req.session.redirectUrl) {
                             res.redirect(req.session.redirectUrl) // redirect to the url the user was trying to go to (checkout the protect middleware in app.js)
                         } else {
                             res.redirect("/"); // default redirect url (if the user is going to login directly)
                         }
                     } else {
-                      next(createError(500))  
+                        res.status(403).render("error", err);        
                     }
                 });                
             }
@@ -76,10 +76,12 @@ app.get("/logout", (req,res)=> {
     res.redirect("/")
 })
 
+
+// search in whole database? guide name can't be taken by regular user and other guides??
 app.get("/username-availability/:username", (req,res)=> {
     User.findOne({username: req.params.username})
-        .then((user)=> {
-            if(user) res.json({available: false});
+        .then((guide)=> {
+            if(guide) res.json({available: false});
             else res.json({available: true});
         })
         .catch((error)=> {

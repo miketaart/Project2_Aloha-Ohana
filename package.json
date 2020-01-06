@@ -19,5 +19,13 @@
     "multer": "^1.4.2"
   },
   "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/miketaart/project_2_ironTour.git"
+  },
+  "bugs": {
+    "url": "https://github.com/miketaart/project_2_ironTour/issues"
+  },
+  "homepage": "https://github.com/miketaart/project_2_ironTour#readme",
   "description": ""
 }

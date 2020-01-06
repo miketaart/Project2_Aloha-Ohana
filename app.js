@@ -30,14 +30,15 @@ mongoose.connect("mongodb://localhost:27017/Aloha-Ohana", options ,(err, connect
 })
 
 function protect(req, res, next) {
-  if(req.session.currentUser) next();
+  if(req.session.user || req.session.guide) next();
   else {
       req.session.redirectUrl = req.originalUrl; // save the route the user was trying to go to in the session
-      res.redirect("/auth/login") // after the successfull login we're redirecting to this route. Checkout the Post login route
+      res.redirect("/authorization/login") // after the successfull login we're redirecting to this route. Checkout the Post login route. //AUTH
   };
 }
 app.use((req, res, next)=> {
-  if(req.session.currentUser) res.locals.user = req.session.currentUser;
+  if(req.session.user) res.locals.user = req.session.user;
+  if(req.session.guide) res.locals.guide = req.session.guide;
   next();
 })
 
@@ -49,10 +50,11 @@ app.use("/", require("./routes/authorization.js"));
 app.use("/user", protect, require("./routes/user.js"));
 app.use("/", require("./routes/home"));
 app.use("/", require("./routes/about"));
-app.use("/", require("./routes/createTour.js"));
-app.use("/", require("./routes/tour.js"));
-app.use("/", require("./routes/editTour.js"));
-app.use("/", require("./routes/deleteTour.js"));
+app.use("/", require("./routes/createTour.js")); //protect
+app.use("/", require("./routes/tour.js")); 
+app.use("/", require("./routes/editTour.js")); //protect
+app.use("/", require("./routes/deleteTour.js")); //protect
+app.use("/", require("./routes/authGuide.js"));
 
 // remember the page the user came from
 // pass user state/session info to all hbs files
