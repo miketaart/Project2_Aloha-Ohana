@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const Tour = require("../../models/Tour");
+const Tourist = require("../../models/Tourist");
 
 app.get("/detail", (req,res)=> {
     let tourId = req.query.id //queries here also means queries in list.hbs
@@ -23,8 +24,11 @@ app.get("/list", (req,res, next)=> {
         console.log("Err", err);
         next(createError(500, 'Sorry, our database crashed. Please come back later.'))
     })
-    // lala
 })
 
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 module.exports = app

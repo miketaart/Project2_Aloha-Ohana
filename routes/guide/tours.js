@@ -14,16 +14,17 @@ app.get("/list", (req,res, next)=> {
     // lala
 })
 
-app.get("/list", (req,res, next)=> {
-    Tour.find({})
-    .then((tours)=> {
-        res.render("tours/tours.hbs", {tours:tours});
-    })
-    .catch((err)=> {
-        console.log("Err", err);
-        next(createError(500, 'Sorry, our database crashed. Please come back later.'))
-    })
-    // lala
+app.get("/detail", (req,res)=> {
+    let tourId = req.query.id //queries here also means queries in list.hbs
+    Tour.findById(tourId)
+        //.populate("guideProfile")
+        //.populate("guideProfile")
+        .then((tour)=> {
+            res.render("tours/view-tour.hbs", { tour: tour });
+        })
+        .catch((err)=> {
+            console.log(("error", err));
+        })
 })
 
 app.get("/create", (req,res) => {
@@ -42,7 +43,7 @@ app.post("/create", (req, res) => {
 
     Tour.create(newTour)
     .then(() => {
-        res.redirect("/tours")
+        res.redirect("/guide/tours/list")
     })
     .catch(err => console.log(err))
 })
@@ -74,7 +75,7 @@ app.post("/edit/:id", (req, res) => {
 
     Tour.findByIdAndUpdate(tourId, editTour, {new:true})
     .then((newTour) => {
-        res.redirect(`/tour?id=${newTour.id}`)
+        res.redirect(`/tourist/tours/detail?id=${newTour.id}`)
     })
     .catch(err => console.log(err))
 })
@@ -83,7 +84,7 @@ app.get("/delete/:id", (req,res)=> {
     let tourId = req.params.id
     Tour.findByIdAndDelete(tourId)
         .then(() => {
-            res.redirect("/tours")
+            res.redirect("/guide/tours/list")
         })
         .catch(err => console.log(err));
 });

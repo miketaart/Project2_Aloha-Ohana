@@ -31,7 +31,7 @@ app.post("/signup", (req,res, next)=> {
             })
         })
         .then((user)=> {
-            res.redirect("/tourist/authorization/login");
+            res.redirect("/login");
         })
         .catch((error)=> {
             if(error.type === "Availability Error") next(createError(400, error));
@@ -87,15 +87,5 @@ app.get("/username-availability/:username", (req,res)=> {
         })
 })
 
-app.get("/username-availability/:username", (req,res)=> {
-    User.findOne({username: req.params.username})
-        .then((user)=> {
-            if(user) res.json({available: false});
-            else res.json({available: true});
-        })
-        .catch((error)=> {
-            res.json(createError(500, "A server error has occurred."));
-        })
-})
 
 module.exports = app;

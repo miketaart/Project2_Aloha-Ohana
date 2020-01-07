@@ -1,5 +1,5 @@
 <h2>Edit your tour</h2>
-<form action="/edit/{{tour.id}}" method="POST" id="usrform">
+<form action="/guide/tours/edit/{{tour.id}}" method="POST" id="usrform">
     <input type="text" placeholder="Title of your tour" name="title" value="{{tour.title}}">
     <input type="number" placeholder="Duration" name="duration" value="{{tour.duration}}">
     <input type="text" placeholder="Name of guide" name="guide_name" value="{{tour.guide_name}}">

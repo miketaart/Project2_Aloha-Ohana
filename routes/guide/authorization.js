@@ -32,7 +32,7 @@ app.post("/signup", (req,res, next)=> {
             })
         })
         .then((user)=> {
-            res.redirect("guide/authorization/login");
+            res.redirect("/guide/authorization/login");
         })
         .catch((error)=> {
             if(error.type === "Availability Error") next(createError(400, error));
