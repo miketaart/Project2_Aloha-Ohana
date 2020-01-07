@@ -15,22 +15,25 @@
 </head>
 <body>
     <h1>{{title}}</h1>
-    <nav>
-        <ul>
-            <li><a href="/">Aloha 'Ohana [replace with logo later]</a></li>
-            <li><a href="/about">About us</a></li>
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+            <a class="nav-title" href="/">Aloha'Ohana</a>
+            <div class="nav-items">
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mx-auto">
+            <li class="nav-item"><a class="nav-link" href="/about">About Us </a></li>
             {{#if user }}
                 {{#if role.guide}}
                     <li>Hi, {{user.username}}! </li>
-                    <li><a href="/guide/tours">Your tours</a></li> 
-                    <li><a href="/guide/create">Create your tour!</a></li> 
-                    <li><a href="/guide/logout">logout</a></li> 
+                    <li><a href="/guide/tours/list">Your tours</a></li> 
+                    <li><a href="/guide/tours/create">Create your tour!</a></li> 
+                    <li><a href="/guide/authorization/logout">logout</a></li> 
                     <li><a href="/guide/user/upload-profile-pic">profile</a></li> 
                     <li><a href="/tourist/switch-role">switch to tourist mode</a></li> 
                 {{else if role.tourist}}
                     <li>Hi, {{user.username}}! </li>
-                    <li><a href="/tourist/tours">Your tours</a></li> 
-                    <li><a href="/tourist/logout">logout</a></li> 
+                    <li><a href="/tourist/tours/list">Your tours</a></li> 
+                    <li><a href="/tourist/authorization/logout">logout</a></li> 
                     <li><a href="/tourist/user/upload-profile-pic">profile</a></li> 
                     <li><a href="/guide/switch-role">switch to guide mode</a></li> 
                 {{/if}}
@@ -47,13 +50,10 @@
                 {{/if}}
 
             {{/if}}
-            
         </ul>
     </nav>
 
     {{{body}}}
 </body>
 </html>
-
-
 

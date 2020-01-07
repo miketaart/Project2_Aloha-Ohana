@@ -3,6 +3,7 @@ const app = express();
 const Guide = require("../../models/Guide");
 const bcrypt = require('bcrypt');
 const createError = require('http-errors')
+const User = require("../../models/User");
 
 app.get("/signup", (req,res)=> {
     res.render("authorization/signupGuide.hbs");
@@ -21,17 +22,17 @@ app.post("/signup", (req,res, next)=> {
                 error.type = "Availability Error";
                 throw error;
             }
-            return Guide.create({
-                firstName: req.body.firstName,
-                lastName: req.body.lastName,
-                birthday: req.body.birthday,
+            return User.create({
+                //firstName: req.body.firstName,
+                //lastName: req.body.lastName,
+                //birthday: req.body.birthday,
                 username: req.body.username,
                 email: req.body.email,
                 password: hash
             })
         })
-        .then((guide)=> {
-            res.redirect("/guide/login");
+        .then((user)=> {
+            res.redirect("guide/authorization/login");
         })
         .catch((error)=> {
             if(error.type === "Availability Error") next(createError(400, error));
@@ -46,14 +47,14 @@ app.get("/login", (req,res)=> {
 })
 
 app.post("/login", (req,res, next)=> {
-    Guide.findOne({username: req.body.username})
-        .then((guide)=> {
-            if(!guide) res.status(403).render("error");
+    User.findOne({username: req.body.username}) //or Guide.findOne
+        .then((user)=> {
+            if(!user) res.status(403).render("error");
             else { 
-                bcrypt.compare(req.body.password, guide.password, function(err, correct) {
+                bcrypt.compare(req.body.password, user.password, function(err, correct) {
                     if(err) return res.render("error");
                     else if(correct) {
-                        req.session.guide = guide;
+                        req.session.user = user;
                         if(req.session.redirectUrl) {
                             res.redirect(req.session.redirectUrl) // redirect to the url the user was trying to go to (checkout the protect middleware in app.js)
                         } else {

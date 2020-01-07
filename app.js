@@ -1,6 +1,9 @@
 const express = require("express");
 const app = express();
 const Tour = require("./models/Tour");
+const Guide = require("./models/Guide");
+const User = require("./models/User");
+const Tourist = require("./models/Tourist");
 const createError = require('http-errors')
 
 var bodyParser = require('body-parser')
@@ -38,7 +41,6 @@ function protect(req, res, next) {
 }
 app.use((req, res, next)=> {
   if(req.session.user) res.locals.user = req.session.user;
-  debugger
   if(!req.session.role){
     req.session.role = {
       tourist: true,

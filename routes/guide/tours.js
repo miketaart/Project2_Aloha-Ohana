@@ -2,6 +2,30 @@ const express = require("express");
 const app = express();
 const Tour = require("../../models/Tour");
 
+app.get("/list", (req,res, next)=> {
+    Tour.find({})
+    .then((tours)=> {
+        res.render("tours/tours.hbs", {tours:tours});
+    })
+    .catch((err)=> {
+        console.log("Err", err);
+        next(createError(500, 'Sorry, our database crashed. Please come back later.'))
+    })
+    // lala
+})
+
+app.get("/list", (req,res, next)=> {
+    Tour.find({})
+    .then((tours)=> {
+        res.render("tours/tours.hbs", {tours:tours});
+    })
+    .catch((err)=> {
+        console.log("Err", err);
+        next(createError(500, 'Sorry, our database crashed. Please come back later.'))
+    })
+    // lala
+})
+
 app.get("/create", (req,res) => {
     res.render("tours/createTour.hbs")
 })

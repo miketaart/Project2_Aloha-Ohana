@@ -3,6 +3,7 @@ const app = express();
 const User = require("../../models/User");
 const bcrypt = require('bcrypt');
 const createError = require('http-errors')
+const Tourist = require("../../models/Tourist");
 
 app.get("/signup", (req,res)=> {
     res.render("authorization/signup.hbs");
@@ -26,12 +27,11 @@ app.post("/signup", (req,res, next)=> {
                 //firstname: req.body.firstname,
                 //lastname: req.body.lastname,
                 email: req.body.email,
-                password: hash,
-                something: "else"
+                password: hash
             })
         })
         .then((user)=> {
-            res.redirect("/login");
+            res.redirect("/tourist/authorization/login");
         })
         .catch((error)=> {
             if(error.type === "Availability Error") next(createError(400, error));
@@ -46,7 +46,7 @@ app.get("/login", (req,res)=> {
 })
 
 app.post("/login", (req,res, next)=> {
-    User.findOne({username: req.body.username})
+    User.findOne({username: req.body.username}) //or Tourist.findOne
         .then((user)=> {
             if(!user) next(createError(403))
             else if(user) { 
@@ -89,8 +89,8 @@ app.get("/username-availability/:username", (req,res)=> {
 
 app.get("/username-availability/:username", (req,res)=> {
     User.findOne({username: req.params.username})
-        .then((guide)=> {
-            if(guide) res.json({available: false});
+        .then((user)=> {
+            if(user) res.json({available: false});
             else res.json({available: true});
         })
         .catch((error)=> {
