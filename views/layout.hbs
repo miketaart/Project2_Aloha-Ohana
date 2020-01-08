@@ -1,57 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{{title}}</title>
     <link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/stylesheets/styles.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="/stylesheets/index.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
 </head>
+
 <body>
-    <h1>{{title}}</h1>
-    <nav class="navbar navbar-expand-lg navbar-light">
-        <div class="container">
+    <nav class="nav-bar">
+        <div class="title">
             <a class="nav-title" href="/">Aloha'Ohana</a>
-            <div class="nav-items">
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mx-auto">
-            <li class="nav-item"><a class="nav-link" href="/about">About Us </a></li>
-        
-            {{#if user }}
-                {{#if role.guide}}
-                    <li>Hi, {{user.username}}! </li>
-                    <li><a href="/guide/tours/list">Your tours</a></li> 
-                    <li><a href="/guide/tours/create">Create your tour!</a></li> 
-                    <li><a href="/user/authorization/logout">logout</a></li> 
-                    <li><a href="/guide/user/upload-profile-pic">profile</a></li> 
-                    <li><a href="/tourist/switch-role">switch to tourist mode</a></li> 
-                {{else if role.tourist}}
-                    <li>Hi, {{user.username}}! </li>
-                    <li><a href="/tourist/tours/list">Your tours</a></li> 
-                    <li><a href="/user/authorization/logout">logout</a></li> 
-                    <li><a href="/tourist/user/upload-profile-pic">profile</a></li> 
-                    <li><a href="/guide/switch-role">switch to guide mode</a></li> 
-                {{/if}}
-            {{else }}
-                <li><a href="/authorization/signup">Sign up</a></li>
-                <li><a href="/authorization/login">login</a></li>
+        </div>
+        <div class="bar">
+            <ul class="barlist">
+                <li class="links"><a href="/about">About Us </a></li>
 
+                {{#if user }}
                 {{#if role.guide}}
-                    <li><a href="/tourist/switch-role">switch to tourist mode</a></li> 
+                <li>Hi, {{user.username}}! </li>
+                <li><a href="/guide/tours/list">Your tours</a></li>
+                <li><a href="/guide/tours/create">Create your tour!</a></li>
+                <li><a href="/user/authorization/logout">logout</a></li>
+                <li><a href="/guide/user/upload-profile-pic">profile</a></li>
+                <li><a href="/tourist/switch-role">switch to tourist mode</a></li>
                 {{else if role.tourist}}
-                    <li><a href="/guide/switch-role">switch to guide mode</a></li> 
+                <li>Hi, {{user.username}}! </li>
+                <li><a href="/tourist/tours/list">Your tours</a></li>
+                <li><a href="/user/authorization/logout">logout</a></li>
+                <li><a href="/tourist/user/upload-profile-pic">profile</a></li>
+                <li><a href="/guide/switch-role">switch to guide mode</a></li>
                 {{/if}}
-
-            {{/if}}
-        </ul>
-        
+                {{else }}
+                <li><a class="sign-btn" href="/authorization/signup">Sign up</a></li>
+                <li><a href="/authorization/login">Login</a></li>
+                {{/if}}
+            </ul>
+        </div>
     </nav>
-    <hr>
     {{{body}}}
 </body>
-</html>
 
+</html>

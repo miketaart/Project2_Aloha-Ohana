@@ -1,0 +1,27 @@
+.header {
+    width: 100%;
+    height: 97vh;
+    background-image: url("../images/image 7.jpg");
+    background-size: cover;
+    text-align: center;
+    display: table;
+}
+.header-text {
+    display: table-cell;
+    vertical-align: middle;
+    color: white
+}
+
+.search-btn {
+    width: 90px;
+    height: 47px;
+    background-color: rgb(223, 223, 15);
+    color: white;
+    border-radius: 4px;
+    margin-left: 5px;
+}
+#search {
+    border-radius: 4px;
+    width: 50%;
+    padding: 10px;
+}
