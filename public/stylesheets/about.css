@@ -1,0 +1,14 @@
+.wrapper {
+    background-image: url("/images/tour2.jpg");
+    height: 98vh;
+    flex-direction: column;
+  }
+
+.about{
+    color:salmon;
+    width: 200px;
+}
+
+.text {
+    width: 50%;
+}
