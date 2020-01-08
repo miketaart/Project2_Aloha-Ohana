@@ -67,7 +67,7 @@ app.use(express.static('public'));
 
 app.use("/", require("./routes/home"));
 app.use("/", require("./routes/about"));
-app.use("/", require("./routes/accountType"))
+app.use("/", require("./routes/user/accountType"));
 app.use("/authorization", require("./routes/authorization"));
 app.use("/user", protectUser, require("./routes/user/index"));
 
