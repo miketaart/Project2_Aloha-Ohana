@@ -6,7 +6,7 @@ const User = require("../../models/User");
 const createError = require('http-errors')
 
 app.get("/", (req,res)=> {
-    //if tourist profile already exists then error. else render tourist/create-profile.hbs
+    //******if tourist profile already exists then error. else render tourist/create-profile.hbs
     res.render("tourist/create-profile.hbs");
 })
 

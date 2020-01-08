@@ -13,6 +13,9 @@ User = mongoose.model("users", {
         required: [true, "Correct email is required"],
         validate: /[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}/
     },
+    phone: {type: Number},
+    firstName: {type: String},
+    lastName: {type: String},
     profile_picture: {type: String},
     touristProfile: {type: ObjectId, ref: "Tourist"},
     guideProfile: {type: ObjectId, ref: "Guide"},

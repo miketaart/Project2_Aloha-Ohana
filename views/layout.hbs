@@ -26,6 +26,7 @@
                 {{#if user }}
                 {{#if role.guide}}
                 <li><a href="/user/profile">Hi, {{user.username}}! </a></li>
+                <li><img id="profile" src="/{{user.profile_picture}}" alt=""></li>
                 <li><a href="/guide/tours/list">Your tours</a></li>
                 <li><a href="/guide/tours/create">Create your tour!</a></li>
                 <li><a href="/tourist/switch-role">switch to tourist mode</a></li>
@@ -34,6 +35,7 @@
                 {{else if role.tourist}}
                 <li><a href="/guide/create-profile">Become a host</a></li>
                 <li><a href="/user/profile">Hi, {{user.username}}! </a></li>
+                <li><img id="profile" src="/{{user.profile_picture}}" alt=""></li>
                 <li><a href="/guide/switch-role">switch to guide mode</a></li>
                 <li><a href="/authorization/logout">logout</a></li>
                 

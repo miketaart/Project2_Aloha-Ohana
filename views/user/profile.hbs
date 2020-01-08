@@ -1,6 +1,18 @@
-<img src="/{{user.profile_picture}}" alt="">
+<h1>Your profile:</h1>
+
+<img id="profile-picture" src="/{{user.profile_picture}}" alt="">
 
 <form action="/user/profile" method="POST" enctype="multipart/form-data">
-    <input type="file" name="profile-picture">
+    <input type="file" name="profile_picture">
     <button type="submit">Upload profile picture</button>
 </form>
+
+<div>
+    <p> First name: {{user.firstName}}</p> 
+    <p> Last name: {{user.lastName}}</p>
+    <p> Your email address: {{user.email}}</p>
+    <p> Your phone number: {{user.phone}}</p>
+    <p> Your date of birth: {{tourist.birthday}}</p>
+</div>
+
+<button onclick="window.location.href = '/user/profile/edit';">Edit</button>

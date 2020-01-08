@@ -8,8 +8,6 @@ Guide = mongoose.model("guides", {
     your_country: {type: String},
     favorite_city: {type: String},
     birthday: {type: Date},
-    firstName: {type: String, required: false},
-    lastName: {type: String, required: false},
     hostedTours: [{type: ObjectId, ref: "Tour"}]
 })
 

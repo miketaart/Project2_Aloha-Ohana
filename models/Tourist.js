@@ -9,8 +9,6 @@ Tourist = mongoose.model("tourists", {
         your_country: {type: String},
         favorite_city: {type: String},
         birthday: {type: Date},
-        firstName: {type: String, required: false},
-        lastName: {type: String, required: false},
         purchased_tours: [{type: ObjectId, ref: "tours"}]
         
     })

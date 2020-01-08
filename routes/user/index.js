@@ -8,12 +8,12 @@ app.get("/profile", (req,res)=> {
     res.render("user/profile.hbs");
 })
 
-app.post("/profile", upload.single('profile-picture'), (req,res)=> {
-    User.findByIdAndUpdate(req.session.currentUser._id,{
+app.post("/profile", upload.single('profile_picture'), (req,res)=> {
+    User.findByIdAndUpdate(req.session.user._id,{
         profile_picture: req.file.filename
     })
     .then((user)=> {
-        req.session.currentUser.profile_picture = req.file.filename; // update the session data so that we can base views on it (like profile.hbs or in the navbar)
+        req.session.user.profile_picture = req.file.filename; // update the session data so that we can base views on it (like profile.hbs or in the navbar)
         res.redirect("/user/profile")
     })
     .catch((err)=> {
@@ -22,22 +22,20 @@ app.post("/profile", upload.single('profile-picture'), (req,res)=> {
 })
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
+app.get("/profile/edit", (req,res)=> {
+    res.render("user/edit-profile.hbs");
+})
 //POST method 
-app.post("/edit/:id", (req, res) => {
-    let tourId = req.params.id
-    let editTour = {
-        title: req.body.title,
-        duration: req.body.duration,
-        guide_name: req.body.guide_name,
-        image: req.body.image,
-        city: req.body.city,
-        description: req.body.description
-
-        
+app.post("/profile/edit", (req, res) => {
+    let userId = req.session.user._id
+    let editUser = {
+        phone: req.body.phone,
+        email: req.body.email,
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
     }
 
-    Tour.findByIdAndUpdate(userId, editUser, {new:true})
+    User.findByIdAndUpdate(userId, editUser, {new:true})
     .then((newUser) => {
         res.redirect("/user/profile")
     })
