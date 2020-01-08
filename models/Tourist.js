@@ -3,7 +3,13 @@ const ObjectId = mongoose.Schema.Types.ObjectId;
 
 Tourist = mongoose.model("tourists", {
         //purchased_tours: {type: ObjectId, ref: "Tour"},
-        trigger: {type: Number},
+        about: {type: String},
+        your_city: {type: String},
+        languages: [{type: String}],
+        your_country: {type: String},
+        favorite_city: {type: String},
+        birthday: {type: Date},
+        profile_picture: {type: String},
         purchased_tours: [{type: ObjectId, ref: "tours"}]
         
     })

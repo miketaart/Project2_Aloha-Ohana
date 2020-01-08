@@ -31,6 +31,9 @@ app.post("/signup", (req,res, next)=> {
                 password: hash
             })
         })
+        .then((user) => {
+            req.session.user = user;
+        })
         .then((user)=> {
             if(req.session.role.guide) res.redirect("/guide/create-profile");
             else if (req.session.role.tourist) res.redirect("/tourist/create-profile");

@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 const Tour = require("./models/Tour");
 const Guide = require("./models/Guide");
-const User = require("./models/User");
+const user = require("./models/User");
 const Tourist = require("./models/Tourist");
 const createError = require('http-errors')
 
@@ -49,13 +49,16 @@ function protectGuide(req,res,next) {
   if(req.session.user.touristProfile) next();
   else res.redirect("/guide/create-profile");
 }
-app.use((req, res, next)=> {
+// by default if there is no role then automatically your role becomes "tourist".
+app.use((req, res, next)=> { 
+  console.log("SESSION>>>>>",req.session)
   if(req.session.user) res.locals.user = req.session.user;
   if(!req.session.role){
     req.session.role = {
       tourist: true,
       guide: false
     }
+    
   }
   res.locals.role = req.session.role;
   next();
