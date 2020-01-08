@@ -1,7 +1,7 @@
 .wrapper {
     display: flex;
     align-items: center;
-    background-image: url("/images/tour.jpg");
+    background-image: url("/images/tour1.jpg");
     height: 98vh;
   }
   
@@ -20,7 +20,6 @@
     margin-bottom: 40px;
   }
   
-  
   input[type="text"] {
     margin-bottom: 10px;
   
@@ -29,4 +28,8 @@
   input[type="password"] {
     margin-bottom: 20px;
   
+  }
+
+  .user {
+    margin-bottom: 10px;
   }

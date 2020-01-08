@@ -18,6 +18,19 @@
   display: flex;
   justify-content: center;
   margin-bottom: 40px;
+  padding-top: 20px;
+}
+
+.desc {
+  margin: 0;
+}
+
+.form-control {
+  margin-bottom: 20px;
+}
+
+.btn {
+  margin-top: 10px;
 }
 
 
@@ -35,4 +48,8 @@ input[type="password"] {
   display: flex;
   justify-content: center;
   margin-top: 30px;
+}
+
+#cr {
+  padding-left: 10px;
 }
