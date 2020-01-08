@@ -1,22 +1,27 @@
-<form action="/authorization/signup" method="POST">
-    <p id="available"></p>
-    <input type="email" required name="email" placeholder="Email">
-    <input id="username" type="text" required name="username" placeholder = "What should we call you?">
-    <input type="password" required name="password" placeholder = "Password">
-    <button type="submit">Sign up</button>
-</form>
+<div class="wrapper">
+    <form class="form-signin" action="/authorization/signup" method="POST">
+        <p id="available"></p>
+        <h2 class="form-signin-heading">Please Sign Up</h2>
+        <input class="form-control" type="email" required name="email" placeholder="Email">
+        <input class="form-control" type="text" required name="username" placeholder="What should we call you?">
+        <input class="form-control" type="password" required name="password" placeholder="Password">
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
+    </form>
+</div>
+
+
 
 <script>
     let $form = document.getElementsByTagName("form")[0];
-    document.getElementById("username").addEventListener("blur", (event)=>{
+    document.getElementById("username").addEventListener("blur", (event) => {
         let usernameInputValue = event.target.value;
         axios.get(`/authorization/username-availability/${usernameInputValue}`)
-            .then((response)=> {
+            .then((response) => {
                 let $p = document.getElementById("available");
-                if(response.data.available) $p.innerHTML = "Username available";
+                if (response.data.available) $p.innerHTML = "Username available";
                 else $p.innerHTML = "Username unavailable";
             })
-            .catch((error)=> {
+            .catch((error) => {
                 // do some dom manipulation based on error
             })
     })

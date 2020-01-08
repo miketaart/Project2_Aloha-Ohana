@@ -1,33 +1,38 @@
-.wrapper {	
-    display: flex;
-    align-items: center;
-    background-image: url("/images/tour.jpg");
-    height: 98vh;
+.wrapper {
+  display: flex;
+  align-items: center;
+  background-image: url("/images/tour.jpg");
+  height: 98vh;
 }
 
 .form-signin {
-  
+
   width: 350px;
-  padding:  15px 35px 45px;
+  padding: 15px 35px 45px;
   margin: 30px auto;
   background-color: #fff;
-  border: 1px solid rgba(0,0,0,0.1);  
+  border: 1px solid rgba(0, 0, 0, 0.1);
 }
-  .form-signin-heading{
-	  margin-bottom: 40px;
-	}
 
-	
-    input[type="text"] {
-	  margin-bottom: 10px;
-	  
-	}
+.form-signin-heading {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 40px;
+}
 
-	input[type="password"] {
-	  margin-bottom: 20px;
-	  
-    }
-    
-    #new{
-        margin-top: 30px;
-    }
+
+input[type="text"] {
+  margin-bottom: 10px;
+
+}
+
+input[type="password"] {
+  margin-bottom: 20px;
+
+}
+
+#new {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
