@@ -84,13 +84,12 @@ app.post("/add", (req, res) => {
     })
     .catch(err => console.log(err))
 
-    Tourist.findByIdAndUpdate(touristId).push(purchased_tours: Tour.id}})
-    .then(() => {
-        res.redirect("/tourist/tours/list")
-    })
+    // Tourist.findByIdAndUpdate(touristId).push(purchased_tours: Tour.id}})
+    // .then(() => {
+    //     res.redirect("/tourist/tours/list")
+    // })
 })
 
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 module.exports = app

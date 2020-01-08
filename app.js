@@ -32,12 +32,22 @@ mongoose.connect("mongodb://localhost:27017/Aloha-Ohana", options ,(err, connect
     else console.log("connected to db");
 })
 
-function protect(req, res, next) {
+function protectUser(req, res, next) {
   if(req.session.user || req.session.guide) next();
   else {
       req.session.redirectUrl = req.originalUrl; // save the route the user was trying to go to in the session
       res.redirect("/authorization/login") // after the successfull login we're redirecting to this route. Checkout the Post login route. //AUTH
   };
+}
+
+function protectTourist(req,res,next) {
+  if(req.session.user.touristProfile) next();
+  else res.redirect("/tourist/create-profile");
+}
+
+function protectGuide(req,res,next) {
+  if(req.session.user.touristProfile) next();
+  else res.redirect("/guide/create-profile");
 }
 app.use((req, res, next)=> {
   if(req.session.user) res.locals.user = req.session.user;
@@ -57,16 +67,17 @@ app.use(express.static('public'));
 
 app.use("/", require("./routes/home"));
 app.use("/", require("./routes/about"));
-app.use("/user", protect, require("./routes/user"));
+app.use("/", require("./routes/accountType"))
+app.use("/authorization", require("./routes/authorization"));
+app.use("/user", protectUser, require("./routes/user/index"));
 
-app.use("/tourist/tours", require("./routes/tourist/tours"));
-app.use("/tourist/authorization", require("./routes/tourist/authorization"));
+app.use("/tourist/tours", protectUser, protectTourist, require("./routes/tourist/tours"));
+app.use("/tourist/create-profile", require("./routes/tourist/create-profile"));
 app.use("/tourist/switch-role", require("./routes/tourist/switch-role"));
 
 app.use("/guide/tours", require("./routes/guide/tours")); //protect
-app.use("/guide/authorization", require("./routes/guide/authorization"));
+// app.use("/guide/create-profile", require("./routes/guide/create-profile")); // todo
 app.use("/guide/switch-role", require("./routes/guide/switch-role"));
-
 
 // remember the page the user came from
 // pass user state/session info to all hbs files

@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 const multer  = require('multer');
 const upload = multer({ dest: 'uploads/' });
-const User = require("../models/User");
+const User = require("../../models/User");
 
 app.get("/upload-profile-pic", (req,res)=> {
     res.render("user/profile-picture.hbs");
