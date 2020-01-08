@@ -13,14 +13,9 @@ User = mongoose.model("users", {
         required: [true, "Correct email is required"],
         validate: /[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}/
     },
-
-    firstName: {type: String, required: false},
-    lastName: {type: String, required: false},
-    birthday: {type: Date, required: false},
-    profile_pic: String,
+    profile_picture: {type: String},
     touristProfile: {type: ObjectId, ref: "Tourist"},
     guideProfile: {type: ObjectId, ref: "Guide"},
-    hostedTours: [{type: ObjectId, ref: "Tour"}]
 })
 
 module.exports = User

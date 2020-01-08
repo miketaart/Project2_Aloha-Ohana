@@ -11,17 +11,24 @@ app.get("/", (req,res)=> {
 
 app.post("/", (req,res, next)=> {
     Guide.create({
+        about: req.body.about,
+        your_country: req.body.your_country,
+        your_city: req.body.your_city,
+        favorite_city: req.body.favorite_city,
+        languages: req.body.languages,
+        birthday: req.body.birthday
 
     })
     .then((guide)=> {
+        //console.log("USER OBJECT>>>>>>", req.session)
         return User.findByIdAndUpdate(req.session.user._id, {
-            touristProfile: guide.id
+            guideProfile: guide.id
         })
     })
-    .catch((err)=> {
-
+    .then(() => {
+        res.redirect("/");
     })
+    .catch(err => console.log(err))
 })
-
 
 module.exports = app;
