@@ -20,7 +20,7 @@ app.post("/", (req,res, next)=> {
 
     })
     .then((tourist)=> {
-        console.log("USER OBJECT>>>>>>", req.session)
+        //console.log("USER OBJECT>>>>>>", req.session)
         return User.findByIdAndUpdate(req.session.user._id, {
             touristProfile: tourist.id
         })

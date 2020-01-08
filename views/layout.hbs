@@ -25,20 +25,22 @@
 
                 {{#if user }}
                 {{#if role.guide}}
-                <li>Hi, {{user.username}}! </li>
+                <li><a href="/guide/user/upload-profile-pic">Hi, {{user.username}}! </a></li>
                 <li><a href="/guide/tours/list">Your tours</a></li>
                 <li><a href="/guide/tours/create">Create your tour!</a></li>
                 <li><a href="/user/authorization/logout">logout</a></li>
-                <li><a href="/guide/user/upload-profile-pic">profile</a></li>
                 <li><a href="/tourist/switch-role">switch to tourist mode</a></li>
+                
                 {{else if role.tourist}}
-                <li>Hi, {{user.username}}! </li>
+                <li><a href="/guide/create-profile"></a>Become a host</li>
+                <li><a href="/tourist/user/upload-profile-pic">Hi, {{user.username}}! </a></li>
                 <li><a href="/tourist/tours/list">Your tours</a></li>
                 <li><a href="/user/authorization/logout">logout</a></li>
-                <li><a href="/tourist/user/upload-profile-pic">profile</a></li>
                 <li><a href="/guide/switch-role">switch to guide mode</a></li>
+                
                 {{/if}}
                 {{else }}
+                <li><a href="/guide/"></a>Become a host</li>
                 <li><a class="sign-btn" href="/authorization/signup">Sign up</a></li>
                 <li><a href="/authorization/login">Login</a></li>
                 {{/if}}

@@ -32,10 +32,11 @@ app.post("/signup", (req,res, next)=> {
             })
         })
         .then((user) => {
-            req.session.user = user;
+            req.session.user = user; //store user session after finishing signing up. If not => not logged in after signing up.
         })
+        //if session role is set (console.log req.session(.role) to see if the cookie consists the role. In app.js look at line 53)
         .then((user)=> {
-            if(req.session.role.guide) res.redirect("/guide/create-profile");
+            if(req.session.role.guide) res.redirect("/guide/create-profile"); 
             else if (req.session.role.tourist) res.redirect("/tourist/create-profile");
             else {
                 next(createError(500, "no role set"));

@@ -51,7 +51,7 @@ function protectGuide(req,res,next) {
 }
 // by default if there is no role then automatically your role becomes "tourist".
 app.use((req, res, next)=> { 
-  console.log("SESSION>>>>>",req.session)
+  //console.log("SESSION>>>>>",req.session)
   if(req.session.user) res.locals.user = req.session.user;
   if(!req.session.role){
     req.session.role = {
