@@ -1,6 +1,9 @@
 const express = require("express");
 const app = express();
 const Tour = require("../../models/Tour");
+const Guide = require("../../models/Guide")
+
+const mongoose = require("mongoose")
 
 app.get("/list", (req,res, next)=> {
     Tour.find({})
@@ -17,8 +20,7 @@ app.get("/list", (req,res, next)=> {
 app.get("/detail", (req,res)=> {
     let tourId = req.query.id //queries here also means queries in list.hbs
     Tour.findById(tourId)
-        //.populate("guideProfile")
-        //.populate("guideProfile")
+        .populate("guideProfile")
         .then((tour)=> {
             res.render("tours/view-tour.hbs", { tour: tour });
         })
@@ -38,7 +40,8 @@ app.post("/create", (req, res) => {
         guide_name: req.body.guide_name,
         image: req.body.image,
         city: req.body.city,
-        description: req.body.description
+        description: req.body.description,
+        guideProfile: mongoose.Types.ObjectId(req.body.guideProfile)
     }
 
     Tour.create(newTour)

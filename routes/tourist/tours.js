@@ -15,19 +15,6 @@ app.get("/detail", (req,res)=> {
         })
 })
 
-app.get("/list", (req,res, next)=> {
-    Tour.find({})
-    .then((tours)=> {
-        res.render("tours/tours.hbs", {tours:tours});
-
-    })
-    .catch((err)=> {
-        console.log("Err", err);
-        next(createError(500, 'Sorry, our database crashed. Please come back later.'))
-    })
-})
-
-
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // find by document id and update and push item in array
 /*users.findByIdAndUpdate(userID,

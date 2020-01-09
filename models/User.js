@@ -1,7 +1,8 @@
 const mongoose = require("mongoose");
 const ObjectId = mongoose.Schema.Types.ObjectId;
+const Schema = mongoose.Schema
 
-User = mongoose.model("users", {
+User = mongoose.model("users", new Schema({
     username: {type: String, required: true},
     password: {
         type: String, 
@@ -19,6 +20,12 @@ User = mongoose.model("users", {
     profile_picture: {type: String},
     touristProfile: {type: ObjectId, ref: "Tourist"},
     guideProfile: {type: ObjectId, ref: "Guide"},
-})
+},
+{
+    timestamps: {
+        createdAt: "createdAt",
+        updatedAt: "updatedAt"
+    }
+}))
 
 module.exports = User

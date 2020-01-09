@@ -67,16 +67,19 @@ app.use((req, res, next)=> {
 app.use(express.static('uploads'));
 app.use(express.static('public'));
 
-
+// general routes
 app.use("/", require("./routes/home"));
 app.use("/", require("./routes/about"));
 app.use("/authorization", require("./routes/authorization"));
 app.use("/user", protectUser, require("./routes/user/index"));
+app.use("/tours", require("./routes/search"));
 
+// tourist routes
 app.use("/tourist/tours", protectUser, protectTourist, require("./routes/tourist/tours"));
 app.use("/tourist/create-profile", require("./routes/tourist/create-profile"));
 app.use("/tourist/switch-role", protectTourist, require("./routes/tourist/switch-role"));
 
+// guide routes
 app.use("/guide/tours", require("./routes/guide/tours")); //protect
 app.use("/guide/create-profile", require("./routes/guide/create-profile")); // todo
 app.use("/guide/switch-role", protectGuide, require("./routes/guide/switch-role"));
