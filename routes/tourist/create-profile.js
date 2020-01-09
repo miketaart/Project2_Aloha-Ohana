@@ -26,11 +26,13 @@ app.post("/", (req,res, next)=> {
             touristProfile: tourist.id
         })
     })
-    .then(() => {
+    .then((user) => {
         res.redirect("/");
     })
     .catch(err => console.log(err))
 })
+
+
 
 
 module.exports = app;

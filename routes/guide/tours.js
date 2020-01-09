@@ -2,7 +2,6 @@ const express = require("express");
 const app = express();
 const Tour = require("../../models/Tour");
 const Guide = require("../../models/Guide")
-
 const mongoose = require("mongoose")
 
 app.get("/list", (req,res, next)=> {
@@ -34,6 +33,7 @@ app.get("/create", (req,res) => {
 })
 
 app.post("/create", (req, res) => {
+   
     let newTour = {
         title: req.body.title,
         duration: req.body.duration,
@@ -41,7 +41,7 @@ app.post("/create", (req, res) => {
         image: req.body.image,
         city: req.body.city,
         description: req.body.description,
-        guideProfile: mongoose.Types.ObjectId(req.body.guideProfile)
+        guideProfile: mongoose.Types.ObjectId(req.session.user.guideProfile)
     }
 
     Tour.create(newTour)

@@ -5,7 +5,8 @@ const Tour = require("./models/Tour");
 const Guide = require("./models/Guide");
 const user = require("./models/User");
 const Tourist = require("./models/Tourist");
-const createError = require('http-errors')
+const createError = require('http-errors');
+const refreshSession = require("./middleware/refreshSession");
 require("dotenv").config();
 
 hbs.registerPartials(__dirname + '/views/partials');
@@ -66,10 +67,10 @@ app.use((req, res, next)=> {
   res.locals.role = req.session.role;
   next();
 })
+app.use(refreshSession);
 
 app.use(express.static('uploads'));
 app.use(express.static('public'));
-
 // general routes
 app.use("/", require("./routes/home"));
 app.use("/", require("./routes/about"));
