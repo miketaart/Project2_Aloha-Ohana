@@ -1,11 +1,11 @@
-.wrapper {
+.login .wrapper {
   display: flex;
   align-items: center;
   background-image: url("/images/tour.jpg");
   height: 98vh;
 }
 
-.form-signin {
+.login .form-signin {
 
   width: 350px;
   padding: 15px 35px 45px;
@@ -14,42 +14,42 @@
   border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
-.form-signin-heading {
+.login .form-signin-heading {
   display: flex;
   justify-content: center;
   margin-bottom: 40px;
   padding-top: 20px;
 }
 
-.desc {
+.login .desc {
   margin: 0;
 }
 
-.form-control {
+.login .form-control {
   margin-bottom: 20px;
 }
 
-.btn {
+.login .btn {
   margin-top: 10px;
 }
 
 
-input[type="text"] {
+.login input[type="text"] {
   margin-bottom: 10px;
 
 }
 
-input[type="password"] {
+.login input[type="password"] {
   margin-bottom: 20px;
 
 }
 
-#new {
+.login #new {
   display: flex;
   justify-content: center;
   margin-top: 30px;
 }
 
-#cr {
+.login #cr {
   padding-left: 10px;
 }

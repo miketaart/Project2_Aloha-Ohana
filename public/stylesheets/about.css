@@ -1,14 +1,10 @@
-.wrapper {
+.about .wrapper {
     background-image: url("/images/tour2.jpg");
     height: 98vh;
+    color: salmon;
     flex-direction: column;
-  }
-
-.about{
-    color:salmon;
-    width: 200px;
 }
 
-.text {
+.about .text {
     width: 50%;
 }
