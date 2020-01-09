@@ -46,7 +46,7 @@ function protectTourist(req,res,next) {
 }
 
 function protectGuide(req,res,next) {
-  if(req.session.user.touristProfile) next();
+  if(req.session.user.guideProfile) next();
   else res.redirect("/guide/create-profile");
 }
 // by default if there is no role then automatically your role becomes "tourist".
@@ -75,11 +75,11 @@ app.use("/user", protectUser, require("./routes/user/index"));
 
 app.use("/tourist/tours", protectUser, protectTourist, require("./routes/tourist/tours"));
 app.use("/tourist/create-profile", require("./routes/tourist/create-profile"));
-app.use("/tourist/switch-role", protectGuide, require("./routes/tourist/switch-role"));
+app.use("/tourist/switch-role", protectTourist, require("./routes/tourist/switch-role"));
 
 app.use("/guide/tours", require("./routes/guide/tours")); //protect
 app.use("/guide/create-profile", require("./routes/guide/create-profile")); // todo
-app.use("/guide/switch-role", protectTourist, require("./routes/guide/switch-role"));
+app.use("/guide/switch-role", protectGuide, require("./routes/guide/switch-role"));
 
 // remember the page the user came from
 // pass user state/session info to all hbs files
