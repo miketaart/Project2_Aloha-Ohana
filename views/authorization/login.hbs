@@ -2,6 +2,12 @@
   <div class="wrapper">
           <form class="form-signin" action="/authorization/login" method="POST">  
             <h2 class="form-signin-heading">Login to Aloha 'Ohana</h2>
+            {{#if usererror}}
+            <p>{{usererror}}</p>
+            {{/if}}
+            {{#if passerror}}
+            <p>{{passerror}}</p>
+            {{/if}}
             <input type="text" class="form-control" name="username" placeholder="Username" required="" autofocus="" />
             <input type="password" class="form-control" name="password" placeholder="Password" required=""/>      
             <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>   

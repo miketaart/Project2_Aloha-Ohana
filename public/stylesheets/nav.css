@@ -45,6 +45,11 @@ nav {
     justify-content: space-around;
 }
 
+.bar a{
+    margin-right:20px;
+    
+}
+
 .title {
    display: flex;
    width:30%;

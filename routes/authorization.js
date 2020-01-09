@@ -57,10 +57,10 @@ app.get("/login", (req,res)=> {
 app.post("/login", (req,res, next)=> {
     User.findOne({username: req.body.username}) //or Guide.findOne
         .then((user)=> {
-            if(!user) res.status(403).render("error");
+            if(!user) res.status(403).render("./authorization/login",{usererror: "incorrect user"});
             else { 
                 bcrypt.compare(req.body.password, user.password, function(err, correct) {
-                    if(err) return res.render("error");
+                    if(err) return res.render("./authorization/login", {passerror: "incorrect pass"});
                     else if(correct) {
                         req.session.user = user;
                         if(req.session.redirectUrl) {
@@ -69,7 +69,7 @@ app.post("/login", (req,res, next)=> {
                             res.redirect("/"); // default redirect url (if the user is going to login directly)
                         }
                     } else {
-                        res.status(403).render("error", err);        
+                        res.status(403).render("./authorization/login", {passerror: "incorrect pass"}, err);        
                     }
                 });                
             }

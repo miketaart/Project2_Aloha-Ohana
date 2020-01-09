@@ -33,3 +33,13 @@
 .signup  .user {
     margin-bottom: 10px;
   }
+
+  #member{
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+  } 
+
+  #log{
+    padding-left: 10px;
+  }
