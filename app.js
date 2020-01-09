@@ -6,6 +6,7 @@ const Guide = require("./models/Guide");
 const user = require("./models/User");
 const Tourist = require("./models/Tourist");
 const createError = require('http-errors')
+require("dotenv").config();
 
 hbs.registerPartials(__dirname + '/views/partials');
 var bodyParser = require('body-parser')
@@ -29,7 +30,7 @@ let options = {
                 useUnifiedTopology: true 
             };
 
-mongoose.connect("mongodb://localhost:27017/Aloha-Ohana", options ,(err, connectionInfo)=> {
+mongoose.connect(process.env.db, options ,(err, connectionInfo)=> {
     if(err) console.log("ERROR", err);
     else console.log("connected to db");
 })
@@ -93,6 +94,6 @@ app.use((err, req, res, next)=> {
   res.render("error", err)
 })
 
-app.listen(3000,()=> {
+app.listen(process.env.port,()=> {
   console.log("Webserver listening");
 })
