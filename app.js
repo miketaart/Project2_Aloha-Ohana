@@ -1,11 +1,13 @@
 const express = require("express");
 const app = express();
+const hbs = require('hbs');
 const Tour = require("./models/Tour");
 const Guide = require("./models/Guide");
 const user = require("./models/User");
 const Tourist = require("./models/Tourist");
 const createError = require('http-errors')
 
+hbs.registerPartials(__dirname + '/views/partials');
 var bodyParser = require('body-parser')
 app.use(bodyParser.urlencoded({ extended: false }))
 app.locals.title = "Aloha 'Ohana"
