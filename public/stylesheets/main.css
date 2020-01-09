@@ -2,12 +2,14 @@
 * {
     font-family: "Poppins";
     margin: 0;
-    overflow: hidden;
+    overflow-x: hidden;
    
 }
+body {
+    margin-top:4em;
+}
 li > a {
-   color:black;
-   
+   color:black;   
 }
 
 a:hover {

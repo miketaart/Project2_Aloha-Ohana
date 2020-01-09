@@ -13,42 +13,11 @@
     <link rel="stylesheet" href="/stylesheets/index.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
 </head>
-
+<nav>
+    {{> navPartial}}
+</nav>
 <body>
-    <nav class="nav-bar">
-        <div class="title">
-            <a class="nav-title" href="/">Aloha'Ohana</a>
-        </div>
-        <div class="bar">
-            <ul class="barlist">
-                <li class="links"><a href="/about">About Us </a></li>
 
-                {{#if user }}
-                {{#if role.guide}}
-                <li><a href="/user/profile">Hi, {{user.username}}! </a></li>
-                <li><img id="profile" src="/{{user.profile_picture}}" alt=""></li>
-                <li><a href="/guide/tours/list">Your tours</a></li>
-                <li><a href="/guide/tours/create">Create your tour!</a></li>
-                <li><a href="/tourist/switch-role">switch to tourist mode</a></li>
-                <li><a href="/authorization/logout">logout</a></li>
-                
-                {{else if role.tourist}}
-                <li><a href="/guide/create-profile">Become a host</a></li>
-                <li><a href="/user/profile">Hi, {{user.username}}! </a></li>
-                <li><img id="profile" src="/{{user.profile_picture}}" alt=""></li>
-                <li><a href="/guide/switch-role">switch to guide mode</a></li>
-                <li><a href="/authorization/logout">logout</a></li>
-                
-                
-                {{/if}}
-                {{else }}
-                <li><a href="/authorization/signup">Become a host</a></li>
-                <li><a class="sign-btn" href="/authorization/signup">Sign up</a></li>
-                <li><a href="/authorization/login">Login</a></li>
-                {{/if}}
-            </ul>
-        </div>
-    </nav>
     {{{body}}}
 </body>
 
