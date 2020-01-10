@@ -22,38 +22,6 @@ a:hover {
     height: 250px;
 }
 
-.tour {
-    box-shadow: 10px 10px 5px 0px rgba(245,240,245,1);
-    margin: 10px 10px 40px 10px;
-}
 
-#tour-title {
-    margin-left: 40px;
-    
-}
 
-#tour-text {
-    font-size: 20px;
-    
-}
-
-#tour-link {
-    color:black;
-    text-decoration: none;
-}
-
-#tour-img {
-    height: 275px;
-}
-#tour-del {
-    text-decoration: none;
-}
-
-.duration {
-    font-size: 12px;
-}
-
-.extra {
-    border: 30px solid red
-}
 

@@ -1,12 +1,12 @@
 {{#if role.guide}}
-<img src="{{tour.image}}" alt="">
+<img class="tour-img" src="{{tour.image}}" alt="">
 <h3>{{tour.title}}</h3>
 <h5>Duration: approximately {{tour.duration}} hour(s)</h5>
 <h5>City: {{tour.city}}</h5>
 <h6>Summary: {{tour.description}}</h6>
 <a href="/guide/tours/edit/{{tour.id}}">Edit tour</a>
 {{else }}
-<img src="{{tour.image}}" alt="">
+<img class="tour-img" src="{{tour.image}}" alt="">
 <h3>{{tour.title}}</h3>
 <h5>Duration: approximately {{tour.duration}} hour(s)</h5>
 <h5>City: {{tour.city}}</h5>
