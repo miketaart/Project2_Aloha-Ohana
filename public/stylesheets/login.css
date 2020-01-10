@@ -2,7 +2,7 @@
   display: flex;
   align-items: center;
   background-image: url("/images/tour.jpg");
-  height: 98vh;
+  height: 94vh;
 }
 
 .login .form-signin {

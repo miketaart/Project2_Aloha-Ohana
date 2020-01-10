@@ -1,3 +1,4 @@
+<div class="text">
 {{#if role.guide}}
 <img class="tour-img" src="{{tour.image}}" alt="">
 <div class="detail">
@@ -6,6 +7,10 @@
 <h5>City: {{tour.city}}</h5>
 <h6>Summary: {{tour.description}}</h6>
 <a href="/guide/tours/edit/{{tour.id}}">Edit tour</a>
+<form action="/tourist/tours/add" method="POST">
+<input class="inp" type="number" required name="purchased_tours" placeholder="how often?">
+<button class="btn btn-lg btn-primary btn-block" type="submit">Add!</button>
+</form>
 </div>
 {{else }}
 <img class="tour-img" src="{{tour.image}}" alt="">
@@ -14,11 +19,12 @@
 <h5>Duration: approximately {{tour.duration}} hour(s)</h5>
 <h5>City: {{tour.city}}</h5>
 <h6>Summary: {{tour.description}}</h6>
+<form action="/tourist/tours/add" method="POST">
+<input class="inp" type="number" required name="purchased_tours" placeholder="how often?">
+<button class="btn btn-lg btn-primary btn-block" type="submit">Add!</button>
+</form>
 </div>
 
-<form action="/tourist/tours/add" method="POST">
-<input type="number" required name="purchased_tours" placeholder="how often?">
-<button type="submit">Add!</button>
-</form>
-{{/if}}
 
+{{/if}}
+</div>

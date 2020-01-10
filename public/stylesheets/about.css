@@ -1,20 +1,22 @@
 .about .wrapper {
     background-image: url("/images/tour2.jpg");
     height: 100vh;
-    color: salmon;
+    color: black;
     display: flex;
     flex-direction: column;
     align-items:flex-start;
     padding-left:45%;
-    padding-top: 200px
+    padding-top: 200px;
+    text-shadow: 2px 2px 0 #bcbcbc, 4px 4px 0 #9c9c9c;
 }
 
 .about .text {
     width: 85%;
+    color: black;
+    text-shadow: 2px 2px 0 #bcbcbc, 4px 4px 0 #9c9c9c;
 }
 
 .top {
     display: flex;
     flex-direction: column;
-    
 }

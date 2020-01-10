@@ -14,14 +14,14 @@ nav {
     background-color: white;
 
 }
+
 .nav-bar {
+    background-color:white;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     height: 4em;
     padding: 0;
-    box-shadow: 0 0 5px 0 rgba(245,240,245,1);;
-   
 }
 
 .bar {
@@ -64,8 +64,8 @@ nav {
     text-decoration-line: none;
     padding-left: 30px;
     font-size: 2rem;
-    
 }
+
 .nav-title:hover {
     text-decoration: none;
     color:black;

@@ -3,7 +3,7 @@
 .tour {
     box-shadow: 10px 10px 5px 0px rgba(245,240,245,1);
     margin: 10px 10px 40px 10px;
-    width: 30%;
+
 }
 
 .tours {
@@ -11,8 +11,7 @@
     display: flex;
     flex-direction: row;
     flex-flow: row wrap;
-    margin-left: 80px;
-    
+    margin-left: 80px; 
 }
 #tour-title {
     margin-left: 90px;

@@ -1,0 +1,19 @@
+.create {
+    background-image: url("/images/tour5.jpg");
+    height: 94vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.new-tour {
+    background-color: white;
+    width: 26%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    
+
+}
+
