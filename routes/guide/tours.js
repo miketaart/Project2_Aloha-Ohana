@@ -38,6 +38,7 @@ app.post("/create", (req, res) => {
     let newTour = {
         title: req.body.title,
         duration: req.body.duration,
+        price: req.body.price,
         guide_name: req.body.guide_name,
         image: req.body.image,
         city: req.body.city,
