@@ -31,9 +31,11 @@ let options = {
                 useUnifiedTopology: true 
             };
 
-mongoose.connect(process.env.db, options ,(err, connectionInfo)=> {
+mongoose.connect(process.env.MONGODB_URI, options ,(err, connectionInfo)=> {
     if(err) console.log("ERROR", err);
-    else console.log("connected to db");
+
+}).then((x) => {
+  console.log(`Connected to database: ${x.connections[1].name}`)
 })
 
 function protectUser(req, res, next) {
@@ -99,6 +101,6 @@ app.use((err, req, res, next)=> {
   res.render("home", {createerror: "something went wrong :("})
 })
 
-app.listen(process.env.port,()=> {
+app.listen(process.env.PORT,()=> {
   console.log("Webserver listening");
 })
