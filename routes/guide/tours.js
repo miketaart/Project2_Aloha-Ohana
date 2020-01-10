@@ -7,7 +7,7 @@ const mongoose = require("mongoose")
 app.get("/list", (req,res, next)=> {
     console.log(req.session.user)
     let guide = req.session.user.guideProfile // ???
-    Tour.find({guide})
+    Tour.find({})
     .then((tours)=> {
         res.render("tours/tours.hbs", {tours:tours});
     })

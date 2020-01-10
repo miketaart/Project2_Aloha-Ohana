@@ -1,3 +1,7 @@
 .tour-img {
     width: 50%;
 }
+
+.detail {
+    display: flex;
+}

@@ -7,11 +7,15 @@
 }
 
 .tours {
-    border: 2px solid red;
+    
+    display: flex;
+    flex-direction: row;
+    flex-flow: row wrap;
+    margin-left: 80px;
     
 }
 #tour-title {
-    margin-left: 40px;
+    margin-left: 90px;
     
 }
 
