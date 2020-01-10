@@ -5,6 +5,7 @@
 <h5>Duration: approximately {{tour.duration}} hour(s)</h5>
 <h5>City: {{tour.city}}</h5>
 <h6>Summary: {{tour.description}}</h6>
+<h4>Price: € {{tour.price}}</h4>
 <a href="/guide/tours/edit/{{tour.id}}">Edit tour</a>
 </div>
 {{else }}
@@ -14,11 +15,12 @@
 <h5>Duration: approximately {{tour.duration}} hour(s)</h5>
 <h5>City: {{tour.city}}</h5>
 <h6>Summary: {{tour.description}}</h6>
+<h6>Price: € {{tour.price}}</h6>
 </div>
 
-<form action="/tourist/tours/add" method="POST">
+{{! -- <form action="/tourist/tours/add" method="POST"> --}}
 <input type="number" required name="purchased_tours" placeholder="how often?">
-<button type="submit">Add!</button>
-</form>
+<button onclick="window.location.href ='/coming-soon' " type="submit">Add!</button>
+{{! -- </form> -- }}
 {{/if}}
 

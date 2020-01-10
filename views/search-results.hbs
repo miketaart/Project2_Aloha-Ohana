@@ -1,14 +1,15 @@
-<h1 id="tour-title">Tours in {{tour.city}}</h1>
-<div class="container-fluid">
-    <div class="row">
+<h1 id="tour-title">Results:</h1>
+    
+        <div class="tours">
+    
     {{#each tours}}
-    <div class="col-4">
         <div class="tour">
-        <a href="/tourist/tours/detail/?id={{this.id}}"><img id="tour-img" src="{{image}}" alt="" style="width: 100%;"></a>
+        <a href="/tourist/tours/detail/?id={{this.id}}"><img id="tour-img" src="{{image}}" alt="" ></a>
         <h3 id="tour-text"><a id="tour-link" href="/tourist/tours/detail/?id={{this.id}}">{{title}}</a></h3> {{!-- queries here also means queries in detailedRecipe.js --}}
         <h4 class="duration">Duration: {{duration}} hour(s)</h4>
+        <h6>Price: € {{price}}</h6>
         </div>
-    </div>
     {{/each}}
-    </div>
-</div>
+  
+        </div>
+

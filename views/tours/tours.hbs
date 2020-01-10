@@ -1,6 +1,6 @@
 
 
-<h1 id="tour-title">Tours in {{tour.city}}</h1>
+<h1 id="tour-title">Your tour(s):</h1>
     
         <div class="tours">
     
@@ -9,6 +9,7 @@
         <a href="/tourist/tours/detail/?id={{this.id}}"><img id="tour-img" src="{{image}}" alt="" ></a>
         <h3 id="tour-text"><a id="tour-link" href="/tourist/tours/detail/?id={{this.id}}">{{title}}</a></h3> {{!-- queries here also means queries in detailedRecipe.js --}}
         <h4 class="duration">Duration: {{duration}} hour(s)</h4>
+        <h6>Price: € {{price}}</h4>
         <a id="tour-del" href="/guide/tours/delete/{{this.id}}">Delete</a>
         </div>
     {{/each}}

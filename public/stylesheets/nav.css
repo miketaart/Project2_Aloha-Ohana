@@ -1,11 +1,13 @@
 .sign-btn {
     width: 90px;
+    height: 24px !important;
     background-color: rgb(223, 223, 15);
     color: white;
-    border-radius:50%;
+    border-radius:25px;
     padding: 15px;
     top:0;
 }
+
 nav {
     overflow: hidden;
     position:fixed;
@@ -21,6 +23,7 @@ nav {
     height: 4em;
     padding: 0;
     box-shadow: 0 0 5px 0 rgba(245,240,245,1);;
+    border-bottom: 1px solid darkgray;
    
 }
 
