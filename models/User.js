@@ -18,6 +18,7 @@ User = mongoose.model("users", new Schema({
     firstName: {type: String},
     lastName: {type: String},
     profile_picture: {type: String},
+    birthday: {type: Date},
     touristProfile: {type: ObjectId, ref: "Tourist"},
     guideProfile: {type: ObjectId, ref: "Guide"},
 },

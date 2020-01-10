@@ -36,6 +36,8 @@ app.post("/signup", (req,res, next)=> {
         })
         //if session role is set (console.log req.session(.role) to see if the cookie consists the role. In app.js look at line 53)
         .then((user)=> {
+            console.log(req.session.role.guide)
+            console.log(req.session.role.tourist)
             if(req.session.role.guide) res.redirect("/guide/create-profile"); 
             else if (req.session.role.tourist) res.redirect("/tourist/create-profile");
             else {

@@ -53,6 +53,9 @@ function protectGuide(req,res,next) {
   if(req.session.user.guideProfile) next();
   else res.redirect("/guide/create-profile");
 }
+
+
+
 // by default if there is no role then automatically your role becomes "tourist".
 app.use((req, res, next)=> { 
   //console.log("SESSION>>>>>",req.session)
@@ -79,20 +82,21 @@ app.use("/user", protectUser, require("./routes/user/index"));
 app.use("/tours", require("./routes/search"));
 
 // tourist routes
-app.use("/tourist/tours", protectUser, protectTourist, require("./routes/tourist/tours"));
-app.use("/tourist/create-profile", require("./routes/tourist/create-profile"));
+app.use("/tourist/tours", protectUser, require("./routes/tourist/tours"));
+app.use("/tourist/create-profile", protectUser, require("./routes/tourist/create-profile"));
 app.use("/tourist/switch-role", protectTourist, require("./routes/tourist/switch-role"));
 
 // guide routes
-app.use("/guide/tours", require("./routes/guide/tours")); //protect
-app.use("/guide/create-profile", require("./routes/guide/create-profile")); // todo
+app.use("/guide/tours", protectUser, require("./routes/guide/tours")); //protect
+app.use("/guide/create-profile", protectUser, require("./routes/guide/create-profile")); // todo
 app.use("/guide/switch-role", protectGuide, require("./routes/guide/switch-role"));
 
 // remember the page the user came from
 // pass user state/session info to all hbs files
 app.use((err, req, res, next)=> {
   console.log("ERROR", err)
-  res.render("error", err)
+  //res.render("error", err)
+  res.render("home", {createerror: "something went wrong :("})
 })
 
 app.listen(process.env.port,()=> {

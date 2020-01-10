@@ -33,6 +33,7 @@ app.post("/profile/edit", (req, res) => {
         email: req.body.email,
         firstName: req.body.firstName,
         lastName: req.body.lastName,
+        birthday: req.body.birthday
     }
 
     User.findByIdAndUpdate(userId, editUser, {new:true})

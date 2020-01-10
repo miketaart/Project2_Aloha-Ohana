@@ -5,7 +5,9 @@ const Guide = require("../../models/Guide")
 const mongoose = require("mongoose")
 
 app.get("/list", (req,res, next)=> {
-    Tour.find({})
+    console.log(req.session.user)
+    let guide = req.session.user.guideProfile // ???
+    Tour.find({guide})
     .then((tours)=> {
         res.render("tours/tours.hbs", {tours:tours});
     })
@@ -13,7 +15,6 @@ app.get("/list", (req,res, next)=> {
         console.log("Err", err);
         next(createError(500, 'Sorry, our database crashed. Please come back later.'))
     })
-    // lala
 })
 
 app.get("/detail", (req,res)=> {
@@ -33,7 +34,6 @@ app.get("/create", (req,res) => {
 })
 
 app.post("/create", (req, res) => {
-   
     let newTour = {
         title: req.body.title,
         duration: req.body.duration,
@@ -45,6 +45,7 @@ app.post("/create", (req, res) => {
     }
 
     Tour.create(newTour)
+    
     .then(() => {
         res.redirect("/guide/tours/list")
     })

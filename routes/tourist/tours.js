@@ -36,14 +36,13 @@ app.post("/detail", (req, res) => {
     let purchasedTour = {
         purchased_tours: req.body.purchased_tours
     }
-
     Tourist.findByIdAndUpdate(tourId, purchasedTour, {new:true})
     .then((newTour) => {
         res.redirect(`/tourist/tours/detail?id=${newTour.id}`)
     })
     .catch(err => console.log(err))
 })
-*/
+
 
 app.get("/add", (req,res, next)=> {
     Tourist.find({})
@@ -61,7 +60,6 @@ app.post("/add", (req, res) => {
     let tourId = req.params.id;
     let touristId = req.Tourist._id;
     let newTourist = {
-        trigger: req.body.trigger,
         purchased_tours: req.body.purchased_tours
     }
 
@@ -77,6 +75,6 @@ app.post("/add", (req, res) => {
     // })
 })
 
-
+*/
 
 module.exports = app

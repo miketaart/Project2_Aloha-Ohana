@@ -6,18 +6,19 @@ const User = require("../../models/User");
 const createError = require('http-errors')
 
 app.get("/", (req,res)=> {
+    //if (req.session.user.guideProfile) res.redirect("/guide/switch-role")
+    //else res.render("/guide/create-profile");
     res.render("guide/create-profile.hbs");
 })
+
+
 
 app.post("/", (req,res, next)=> {
     Guide.create({
         about: req.body.about,
-        your_country: req.body.your_country,
-        your_city: req.body.your_city,
         favorite_city: req.body.favorite_city,
         languages: req.body.languages,
-        birthday: req.body.birthday
-
+        
     })
     .then((guide)=> {
         //console.log("USER OBJECT>>>>>>", req.session)
@@ -26,7 +27,7 @@ app.post("/", (req,res, next)=> {
         })
     })
     .then(() => {
-        res.redirect("/");
+        res.redirect("/guide/switch-role");
     })
     .catch(err => console.log(err))
 })

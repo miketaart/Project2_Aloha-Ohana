@@ -4,6 +4,7 @@ Tour = require("../models/Tour");
 
 
 app.get("/results", (req,res, next)=> {
+    console.log(req.query.search)
     let city = req.query.search //queries here also means queries in searchbar.hbs???
     Tour.find({city})
     .then((tours)=> {

@@ -14,10 +14,7 @@ app.post("/", (req,res, next)=> {
     Tourist.create({
         //about: req.body.about,
         your_country: req.body.your_country,
-        your_city: req.body.your_city,
-        favorite_city: req.body.favorite_city,
-        languages: req.body.languages,
-        birthday: req.body.birthday
+        your_city: req.body.your_city
 
     })
     .then((tourist)=> {
