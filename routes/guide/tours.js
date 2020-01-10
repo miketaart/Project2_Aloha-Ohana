@@ -6,8 +6,9 @@ const mongoose = require("mongoose")
 
 app.get("/list", (req,res, next)=> {
     console.log(req.session.user)
-    let guide = req.session.user.guideProfile // ???
-    Tour.find({guide})
+    console.log(req.session.user.guideProfile)
+    let guideProfile = req.session.user.guideProfile // so variable should be the same as key in object otherwise it won't recognize
+    Tour.find({guideProfile})
     .then((tours)=> {
         res.render("tours/tours.hbs", {tours:tours});
     })
