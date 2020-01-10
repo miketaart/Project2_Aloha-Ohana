@@ -1,3 +1,47 @@
 #profile-picture {
     width: 120px;
 }
+
+.profile .wrapper {
+    display: flex;
+    align-items: center;
+    background-image: url("/images/tour4.jpg");
+    height: 98vh;
+  }
+  
+.profile  .form-signin {
+  
+    width: 350px;
+    padding: 15px 35px 45px;
+    margin: 30px auto;
+    background-color: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+  }
+  
+.profile  .form-signin-heading {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 40px;
+  }
+  
+.profile  input[type="text"] {
+    margin-bottom: 10px;
+  
+  }
+  
+.profile  input[type="password"] {
+    margin-bottom: 20px;
+  
+  }
+
+.profile .form-control{
+    margin-bottom: 20px;
+}
+
+.profile .btn {
+    margin-top: 40px;
+}
+
+#title-pro {
+    margin-bottom: 30px;
+}
