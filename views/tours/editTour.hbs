@@ -1,5 +1,8 @@
-<h2>Edit your tour</h2>
+<div class="edit">
+    <div class="edit-tour">
+<h2 id="edit-title">Edit your tour</h2>
 <form action="/guide/tours/edit/{{tour.id}}" method="POST" id="usrform">
+<div class="edit-forms">
     <input type="text" placeholder="Title of your tour" name="title" value="{{tour.title}}">
     <input type="number" placeholder="Duration" name="duration" value="{{tour.duration}}">
     <input type="text" placeholder="Name of guide" name="guide_name" value="{{tour.guide_name}}">
@@ -17,10 +20,12 @@
         <option value='São Paulo'>São Paulo</option>
     </select><br><br>
 
-    <textarea rows="20" cols="50" name="description" form="usrform">
+    <textarea rows="5" cols="40" name="description" form="usrform">
     {{tour.description}}</textarea>
 
-    <input type="submit">
+    <input id="edit-btn"type="submit">
+    </div>
 </form>
-
+</div>
+</div>
 

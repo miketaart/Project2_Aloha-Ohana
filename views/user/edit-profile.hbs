@@ -1,8 +1,14 @@
 <form action="/user/profile/edit" method="POST">
+
     <input type="text" name="firstName" placeholder="First name" value="{{user.firstName}}">
     <input type="text" name="lastName" placeholder="Last name" value="{{user.lastName}}">
     <input type="number" name="phone" placeholder="Phone number" value="{{user.phone}}">
     <input type="email" name="email" placeholder="Email" value="{{user.email}}">
     <input type="date" name="birthday" value="{{user.birthday}}">
     <button type="submit">Save</button>
+</form>
+<form action="/user/profile" method="POST" enctype="multipart/form-data">
+    <div class="your-form">
+    <input type="file" name="profile_picture">
+    <button id="edit-btn" type="submit">Upload profile picture</button>
 </form>

@@ -1,15 +1,15 @@
-#profile-picture {
+#profiler-picture {
     width: 120px;
 }
 
-.profile .wrapper {
+.profiler .wrapper {
     display: flex;
     align-items: center;
     background-image: url("/images/tour4.jpg");
     height: 98vh;
   }
   
-.profile  .form-signin {
+.profiler  .form-signin {
   
     width: 350px;
     padding: 15px 35px 45px;
@@ -18,27 +18,27 @@
     border: 1px solid rgba(0, 0, 0, 0.1);
   }
   
-.profile  .form-signin-heading {
+.profiler  .form-signin-heading {
     display: flex;
     justify-content: center;
     margin-bottom: 40px;
   }
   
-.profile  input[type="text"] {
+.profiler  input[type="text"] {
     margin-bottom: 10px;
   
   }
   
-.profile  input[type="password"] {
+.profiler  input[type="password"] {
     margin-bottom: 20px;
   
   }
 
-.profile .form-control{
+.profiler .form-control{
     margin-bottom: 20px;
 }
 
-.profile .btn {
+.profiler .btn {
     margin-top: 40px;
 }
 

@@ -1,11 +1,10 @@
-<h1>Your profile:</h1>
+<div class="profile">
+    <div class="edit-profile">
+<h1 id="title">Your profile:</h1>
 
 <img id="profile-picture" src="/{{user.profile_picture}}" alt="">
 
-<form action="/user/profile" method="POST" enctype="multipart/form-data">
-    <input type="file" name="profile_picture">
-    <button type="submit">Upload profile picture</button>
-</form>
+
 
 <div>
     <p> First name: {{user.firstName}}</p> 
@@ -15,4 +14,7 @@
     <p> Your date of birth: {{tourist.birthday}}</p>
 </div>
 
-<button onclick="window.location.href = '/user/profile/edit';">Edit</button>
+<button id="edit-btn" onclick="window.location.href = '/user/profile/edit';">Edit</button>
+</div>
+</div>
+</div>
