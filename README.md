@@ -5,7 +5,7 @@ Technologies used: NodeJS, Express, MongoDB, Handlebars (front end view)
 Footnote: I don't prefer working like this but due to circumstances on my partner's side, we decided to divide the work and each work on either the front end or the back end. 
 My role was to develop the backend and create the wireframes for the front end.
 
-to checkout the project click [here](https://aloha-ohana.herokuapp.com/)
+To checkout the project click [here](https://aloha-ohana.herokuapp.com/).
 
 
 ## Available Scripts
